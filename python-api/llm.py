@@ -37,7 +37,6 @@ def analyze_ticket(ticket_text: str) -> dict:
 
     raw_content = response.content.strip()
 
-    # ✅ Quitar bloques ```json ``` o ```
     if raw_content.startswith("```"):
         raw_content = raw_content.strip("`")
         raw_content = raw_content.replace("json\n", "", 1).strip()

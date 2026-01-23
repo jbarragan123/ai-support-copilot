@@ -1,0 +1,172 @@
+{
+  "name": "support-ticket-workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "new-ticket",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -704,
+        -288
+      ],
+      "id": "68af7817-60f4-4ebf-b258-920ed519ae85",
+      "name": "Webhook",
+      "webhookId": "d10fd5da-b613-496f-95a6-23d0d8fcea78"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8000/process-ticket",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"ticket_id\": \"{{ $json.body.id }}\",\n  \"description\": \"{{ $json.body.description }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -592,
+        -80
+      ],
+      "id": "86b067a1-6adc-4180-bc99-049b5df136ab",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "f79ec15c-79f2-4d8c-8fc3-3d9ca71b95d1",
+              "leftValue": "={{ $json.sentiment }}",
+              "rightValue": "Negative",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -480,
+        128
+      ],
+      "id": "4a92d013-f2d5-4e1e-b09b-f8159bbe9aca",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1abb1d7f-8b25-48a9-912e-58529568f37a",
+              "name": "message",
+              "value": "ALERTA: Ticket con sentimiento negativo",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -256,
+        16
+      ],
+      "id": "1cfd2e94-b55f-4b6b-b594-cd0e40462cb1",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1abb1d7f-8b25-48a9-912e-58529568f37a",
+              "name": "message",
+              "value": "No hubo ticket negativo, relajate por esta vez",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -240,
+        208
+      ],
+      "id": "416031bd-2a7a-41c1-aa05-c8dbfb976c91",
+      "name": "Edit Fields1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "8f486301-f273-45ef-8b7a-5e68b98eb1f4",
+  "meta": {
+    "instanceId": "0ba99dbd111683aa5c30609c93cc097210ab6370f37800e0d00672671c5ad254"
+  },
+  "id": "bCV1HwNfrOEvWYI2Gxuyd",
+  "tags": []
+}
