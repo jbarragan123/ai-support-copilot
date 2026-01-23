@@ -1,0 +1,24 @@
+body {
+  background-color: #f8f9fa; /* light gray suave */
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-3px);
+  transition: all 0.3s ease;
+}
+
+/* Para dark mode básico (opcional, si quieres activarlo) */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+  .card {
+    background-color: #1e1e1e;
+    border-color: #333;
+  }
+  .bg-light-subtle {
+    background-color: #0d0d0d !important;
+  }
+}
