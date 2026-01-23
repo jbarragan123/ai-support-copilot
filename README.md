@@ -11,8 +11,8 @@ AI Support Copilot es un sistema de soporte potenciado por Inteligencia Artifici
 
 ## URLs de Despliegue
 
-- **Frontend (Dashboard React + Vite):** [https://dashboard.render.com/static/srv-d5pe80n5c7fs73bkhej0](https://dashboard.render.com/static/srv-d5pe80n5c7fs73bkhej0)
-- **Backend (API FastAPI):** [https://ai-support-copilot-cumb.onrender.com](https://ai-support-copilot-cumb.onrender.com)
+- **Frontend (Dashboard React + Vite):** [[https://dashboard.render.com/static/srv-d5pe80n5c7fs73bkhej0](https://ai-support-copilot-1.onrender.com/)](https://dashboard.render.com/static/srv-d5pe80n5c7fs73bkhej0)
+- **Backend (API FastAPI):** [https://ai-support-copilot-cumb.onrender.com](https://ai-support-copilot-cumb.onrender.com) (dirá not found por defecto en json, no te preocupes)
 
 **Para enviar un ticket**, usar JSON; se incluye una colección de Postman como ejemplo: `ai-support-copilot.postman_collection.json`
 
