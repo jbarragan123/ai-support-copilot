@@ -16,6 +16,7 @@ AI Support Copilot es un sistema de soporte potenciado por Inteligencia Artifici
 
 **Para enviar un ticket**, usar JSON; se incluye una colección de Postman como ejemplo: `ai-support-copilot.postman_collection.json`
 
+El flujo de n8n está definido como JSON, y permite disparar notificaciones para tickets negativos. No se desplegó en este entorno, pero el microservicio FastAPI procesa los tickets directamente, asegurando que el dashboard funcione en tiempo real (importar en workflow de n8n si necesitan probarlo)
 ---
 
 ## Tecnologías Utilizadas
