@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "7d3d1415-edd2-42d1-b308-37950039aac0",
+		"name": "ai-support-copilot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14411223",
+		"_collection_link": "https://universal-space-626374.postman.co/workspace/e-commerce~60f4293c-940f-4e1b-bb42-530ca68a6ef2/collection/14411223-7d3d1415-edd2-42d1-b308-37950039aac0?action=share&source=collection_link&creator=14411223"
+	},
+	"item": [
+		{
+			"name": "procesar-ticket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ticket_id\": \"8ef56c5c-9ef5-4069-9d8c-0f469d3a5ef0\",\r\n  \"description\": \"Mi internet no funciona desde ayer\"\r\n}\r\n\r\n// {\r\n//   \"ticket_id\": \"c5f004f9-dc8e-4bec-ab45-adcc2b3f1ec1\",\r\n//   \"description\": \"Quiero información sobre planes empresariales\"\r\n// }\r\n\r\n//{\r\n//  \"ticket_id\": \"c68231ee-143d-4634-a516-3bb241d3461c\",\r\n//  \"description\": \"No entiendo un cobro adicional en mi factura\"\r\n//}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ai-support-copilot-cumb.onrender.com/process-ticket",
+					"protocol": "https",
+					"host": [
+						"ai-support-copilot-cumb",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"process-ticket"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
