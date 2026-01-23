@@ -25,7 +25,8 @@ def update_ticket(ticket_id: str, category: str, sentiment: str):
 
     payload = {
         "category": category,
-        "sentiment": sentiment
+        "sentiment": sentiment,
+        "processed": True
     }
 
     response = requests.patch(url, json=payload, headers=headers)
